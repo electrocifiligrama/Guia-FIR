@@ -1,0 +1,70 @@
+\section*{Materiales y Métodos}
+
+\subsection*{Medición de la Efectividad}
+
+\subsubsection{Medición de la Velocidad}
+Para medir la velocidad de recolección se utilizará un cronómetro y $10$ pelotas de tenis. Se realizará el experimento con $3$ distribuciones distintas de las pelotas, reflejadas en la figura \ref{fig:distr}. Se realizará la prueba 5 veces con cada distribución. Para la prueba, la recolección se hará en línea recta, siguiendo una guía marcada en el suelo con cinta de papel, y se pasará el artefacto una única vez por encima de las pelotas. Al finalizar cada recolección, se contará la cantidad de pelotas recogidas. De esta manera se calculará la velocidad de recolección como:
+\vspace{5mm}
+\begin{equation}
+  Velocidad\;artefacto = \frac{Pelotas\;recogidas}{Tiempo\;de\;recolección}
+\end{equation}
+\vspace{5mm}
+Al finalizar se tomará como valor final el promedio de las velocidades registradas. Luego se repetirá el ejercicio, recolectando las pelotas a mano y se efectuará el mismo cálculo de velocidad, obteniendo un valor de Velocidad normal. De manera que el valor final de velocidad de recolección, se calculará como:
+\vspace{3mm}
+\begin{equation}
+  Velocidad = \frac{Velocidad\;artefacto - Velocidad\;normal}{Velocidad\;normal}
+\end{equation}
+\vspace{5mm}
+\subsubsection{Medición del Esfuerzo}
+Para medir el esfuerzo se necesitará un cronómetro. La prueba consiste en un ensayo de resistencia. Se hará maniobrar el artefacto a un usuario por tiempo indefinido, recorriendo el perímetro de un predio de $5x10 m^2$ y se cronometrará el tiempo máximo de maniobra hasta el cansancio. Posteriormente se cronometrará el tiempo máximo de resistencia de un usuario a la recolección de pelotas a mano en el mismo predio. El valor final representativo del esfuerzo de maniobra se calculará como:
+\vspace{5mm}
+\begin{equation}
+  Esfuerzo =\frac{Tiempo\;de\;recolección\;sin\;el\;artefacto - Tiempo\;máximo\;de\;recolección\;con\;artefacto}{Tiempo\;máximo\;de\;recolección\;sin\;artefacto}
+\end{equation}
+\vspace{5mm}
+
+\subsubsection{Medición del Almacenamiento}
+\todo{redactar mejor esto}
+Para calcular la capacidad máxima de almacenamiento se dispondrá de N pelotas. Se realizarán los siguientes pasos:
+-Recolectar una pelota.
+-Recorrer X metros con la pelota almacenada
+-Vuelvo al paso 1.
+Estos pasos se realizarán de manera iterativa hasta que la primera pelota almacenada escape del artefacto durante el paso 2. En ese momento se contarán las pelotas almacenadas. Como valor final de capacidad de almacenamiento, se calculará:
+\vspace{3mm}
+\begin{equation}
+  Almacenamiento =\frac{Pelotas\;almacenadas*Volumen\;de\;cada\;pelota}{Volumen\;total\;del\;recinto\;de\;almacenamiento}
+\end{equation}
+\vspace{5mm}
+
+\subsubsection{Medición de la Recolección}
+Para medir la eficiencia en la recolección se realizará un ensayo con la misma disposición de pelotas que el ensayo de velocidad. En este ensayo, en lugar de medir el tiempo de recolección, se medirá la cantidad de pelotas recogidas y la cantidad de pelotas totales dispuestas. De esta manera, se calculará la eficiencia de recolección como:
+\vspace{3mm}
+\begin{equation}
+  Recolección=\frac{Cantidad\;de\;pelotas\;recogidas}{Total\;de\;pelotas\;distribuidas\;inicialmente}
+\end{equation}
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{.33\textwidth}
+  \centering
+  \includegraphics[width=.7\linewidth]{distrlinea.PNG}
+  \subcaption{Lineal.}
+  \label{fig:distr-lineal}
+\end{minipage}%
+\hfill
+\begin{minipage}{.33\textwidth}
+  \centering
+  \includegraphics[width=.7\linewidth]{distr2lineas.PNG}
+  \subcaption{Bilineal.}
+  \label{fig:distr-bilineal}
+\end{minipage}%
+\hfill
+\begin{minipage}{.33\textwidth}
+  \centering
+  \includegraphics[width=.7\linewidth]{distrrandom.PNG}
+  \subcaption{Aleatoria.}
+  \label{fig:distr-random}
+\end{minipage}
+\caption{Distribución de pelotas a utilizar en pruebas de velocidad y recolección.}
+\label{fig:distr}
+\end{figure}

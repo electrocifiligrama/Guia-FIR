@@ -1,0 +1,50 @@
+\section*{Introducción}
+
+Es común en el golf necesitar practicar tiros, sin necesariamente jugar en una cancha de dieciocho hoyos. Para eso, existen canchas de tiro o driving ranges que consisten en varias plataformas numeradas en hilera donde los jugadores pueden posicionarse y practicar sus golpes apuntando hacia el campo de enfrente. La gran cantidad de jugadores tirando en simultáneo y la gran cantidad de pelotas utilizadas por jugador hacen que en ese mismo campo haya una enorme cantidad de pelotas para recoger a diario.
+
+El objetivo principal, entonces, es conseguir el diseño de un artefacto que permita al personal de mantenimiento de las canchas de golf, recolectar una gran cantidad de pelotas de golf que se encuentran distribuidas aleatoriamente sobre una superficie de pasto, de manera rápida y fácil.
+
+El diseño está basado en dos ideas básicas. En primer lugar, la forma general del artefacto que permitiría al usuario manejarlo a través de un campo de golf. En segundo lugar, la manera en la que el artefacto efectivamente recolectaría las pelotas de golf.
+
+El diseño incluiría un mecanismo en la punta inferior en contacto con el suelo con un espacio donde acumular las pelotas recolectadas y un parante o soporte que se extiende desde el mecanismo hasta una altura cercana a la mitad del pecho del usuario desde la cual se manejaría el artefacto. Esto se puede ver en la Figura 1, marcado con secciones 1 y 2 respectivamente.
+
+Para el mecanismo recolector -aquello marcado como 2 en la figura 1, cuyo detalle se puede observar en la Figura 2-, el diseño se basaría en el siguiente principio. Se considera dos varas rectas de un material lo suficientemente flexible y una pelota de golf cuyo diámetro es de 42,67 mm. Si se posicionan las dos varas de forma paralela, separadas por una distancia de entre 32 y 35 mm, y luego se dispone la pelota de golf justo por debajo de ambas varas, al ejercer presión suficiente las varas se flexionan hacia el exterior expandiendo el espacio de separación entre ellas hasta llegar al diámetro máximo. Esto se ve ilustrado en los pasos 1 y 2 de la figura 3. Luego, en un esfuerzo para recobrar su estado natural, las varas impulsaran la pelota de golf logrando que entre en el compartimiento.
+
+El diseño consistiría en un cabezal cilíndrico o elipsoidal formado por varas paralelas de acero inoxidable (ver figura 2), de manera que, al girar el cabezal sobre pelotas distribuidas aleatoriamente en un campo de pasto, la presión ejercida sobre las mismas entre varas sea suficiente para que ingresen al interior del cabezal donde se almacenarán las pelotas recogidas. Cabe mencionar que el mecanismo permitiría este sistema de almacenamiento ya que la presión requerida para deformar elásticamente las varas y que las mismas permitan el paso hacia adentro o fuera del cabezal es mayor que la que podrían realizar las pelotas de golf una vez dentro del mismo.
+
+El último aspecto a tener en cuenta en el diseño consiste en la forma de vaciar el dispositivo una vez que esté lleno. Para hacer esto existen dos alternativas; la primera consiste en que una de las varas sea retráctil, lo que significa que podrá desengancharse momentáneamente para poder vaciar el artefacto. La segunda opción consiste en incluir una compuerta en una de las caras laterales que se pueden observar en la figura \ref{fig:func1}, y, desde allí quitar las pelotas juntadas.
+
+\begin{figure}[H]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=.7\linewidth]{func1.jpg}
+  \caption{Mecanismo de recolección y parante de maniobra.}
+  \label{fig:func1}
+\end{minipage}%
+\hfill
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=.7\linewidth]{func2.jpg}
+  \caption{Vista frontal y detalle del diseño.}
+  \label{fig:func2}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{sec.png}
+\captionof{figure}{Principio de funcionamiento.}
+\label{fig:sec}
+\end{figure}
+
+Para poder analizar y estudiar la efectividad del diseño final, será necesario poder medir y controlar distintas variables. Las variables que se tendrán  en cuenta serán la velocidad de recolección, medida en función de cuántas pelotas recolecta el dispositivo en una cierta cantidad de tiempo; el esfuerzo de maniobra del usuario para utilizar el dispositivo a medida que las pelotas son recogidas; cantidad de pelotas máxima que el dispositivo puede almacenar y la eficacia de la recolección, calculada como el cociente entre las pelotas recogidas en una pasada y la cantidad de pelotas distribuidas originalmente en esa pasada.
+
+La efectividad del dispositivo será calculada según la siguiente fórmula ponderada:
+\vspace{5mm}
+\begin{equation}
+  \xi =\alpha Velocidad + \beta  Esfuerzo + \gamma Almacenamiento + \delta Recoleccion
+\end{equation}
+\vspace{3mm}
+
+Con los valores máximos de cada factor $\alpha=0.3$, $\beta=0.3$, $\gamma=0.1$ y $\delta=0.3$, ya que para el objetivo del proyecto, es decir la recolección rápida y fácil de las pelotas de golf, lo esencial es realizar el menor esfuerzo posible y poder terminar la tarea en menor tiempo. El factor de recolección está íntimamente relacionado con la facilidad de uso del artefacto, ya que mide cuántas veces sería necesario pasar el artefacto por un número N de pelotas para poder recolectarlas a todas. Cabe aclarar, que si bien el almacenamiento no tienen la misma importancia que los factores mencionados, este facilitará el trabajo del personal de mantenimiento. Se estima tener un valor  de aproximadamente $0.7$ para que cumpla con el fin del diseño, teniendo en cuenta que existen errores de fabricación y de manubrio humano.
