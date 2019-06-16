@@ -1,12 +1,16 @@
 hold off
+clear all
 close all
 
-% Especificaciones: high pass con:
-fs=44100 ;
-fp=1e3;
-fa=2e3;
-Ap=2;
-Aa=20;
+% Especificaciones: Low Pass con:
+fs=48000 ;
+fp=2e3;
+fa=2.2e3;
+Ap=1;
+Aa=40;
+
+
+% Dise?o del filtro Pasa bajos usando ventana de kaiser 
 
 %'Calculo de alfa y N'
 
@@ -55,7 +59,7 @@ h=[ h(((N-1)/2 ):-1:1) 1-2*fc h];          % La hacemos causal
 %==========================================================================
 % Multiplicamos por la ventana rectangular
 
-h=h.*rect(N)';
+h=h.*kai(N,alfa)';
 
 
 %=================Normalizamos la respuesta en frecuencia del filtro en banda pasante=====================================
@@ -88,20 +92,20 @@ modulo=abs(H);
 fase=angle(H);
 
 
-%Banda pasante
+%modulo
 figure(1)
 plot(F,20*log10(modulo));
-title('Pasaaltos con ventana rectangular');
+title('Pasaaltos con ventana de Kaiser');
 xlabel('Frecuencia [Hz]');
 ylabel('Magnitud [dB]');
-v=[0,fs/2,-50,10];
+v=[0,fs/2,-100,10];
 axis(v);
 grid on
 
-%Banda atenuada
+%fase
 figure(2)
 plot(F,fase);
-title('Pasaaltos con ventana rectangular');
+title('Pasaaltos con ventana de Kaiser');
 xlabel('Frecuencia [Hz]');
 ylabel('Fase [grados]');
 v=[0,fs/2,-10,10];

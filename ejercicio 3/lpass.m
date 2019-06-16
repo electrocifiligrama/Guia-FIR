@@ -1,14 +1,18 @@
 hold off
+clear all
 close all
 
-% Especificaciones: high pass con:
-fs=44100 ;
-fp=1e3;
-fa=2e3;
-Ap=2;
-Aa=20;
+% Especificaciones: Low Pass con:
+fs=48000;
+fp=2000;
+fa=2200;
+Ap=1;
+Aa=40;
 
-%'Calculo de alfa y N'
+
+% Dise�o del filtro Pasa bajos usando ventana de kaiser 
+
+'Calculo de alfa y N'
 
 deltaa=10^(-.05*Aa);
 deltap=(10^(.05*Ap)-1)/(10^(.05*Ap)+1);
@@ -50,18 +54,17 @@ fc=(fp+fa)/2;	 %frecuencia de corte normalizada respecto de fs
 
 %===========================Construccion de la h(n)====================================
 n=1:(N-1)/2;
-h(n)=-2*fc*(sin(2*pi*fc*n)./(2*pi*fc*n)); % h(n) for Lowpass
-h=[ h(((N-1)/2 ):-1:1) 1-2*fc h];          % La hacemos causal 
+h(n)=2*fc*(sin(2*pi*fc*n)./(2*pi*fc*n)); % h(n) for Lowpass
+h=[ h(((N-1)/2 ):-1:1) 2*fc h];          % La hacemos causal 
 %==========================================================================
-% Multiplicamos por la ventana rectangular
+% Multiplicamos por la ventana de kaiser
 
-h=h.*rect(N)';
-
+h=h.*kai(N,alfa)';
 
 %=================Normalizamos la respuesta en frecuencia del filtro en banda pasante=====================================
 
-F0dB=6000;                       % F0dB es la frecuencia donde la ganancia del filtro debe ser unitaria ( 0 dB) esto es la banda pasante del filtro
-Zo=exp(-1j*2*pi*F0dB*1/fs);    % Z=e-jWT
+F0dB=0;                       % F0dB es la frecuencia donde la ganancia del filtro debe ser unitaria ( 0 dB) esto es la banda pasante del filtro
+Zo=exp(-j*2*pi*F0dB*1/fs);    % Z=e-jWT
 gain = abs(polyval(h,Zo));    % mod H(ejWT) evaluado en F0dB que es la ganancia actual del filtro en esa frecuencia
 h = h/gain;                   % Normalizamos la h de esta manera los coeficentes del filtro no superan la unidad 
 %====================================================================================================================
@@ -88,23 +91,19 @@ modulo=abs(H);
 fase=angle(H);
 
 
-%Banda pasante
 figure(1)
 plot(F,20*log10(modulo));
-title('Pasaaltos con ventana rectangular');
+title('Pasabajos con ventana de Kaiser');
 xlabel('Frecuencia [Hz]');
 ylabel('Magnitud [dB]');
-v=[0,fs/2,-50,10];
+v=[0,fs/2,-125,10];
 axis(v);
 grid on
 
 %Banda atenuada
 figure(2)
-plot(F,fase);
-title('Pasaaltos con ventana rectangular');
-xlabel('Frecuencia [Hz]');
-ylabel('Fase [grados]');
-v=[0,fs/2,-10,10];
+plot(F,20*log10(modulo));
+v=[fp,.5*fs,-80,10];
 axis(v);
 grid
 

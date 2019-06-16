@@ -6,7 +6,7 @@ fs=44100 ;
 fp=1e3;
 fa=2e3;
 Ap=2;
-Aa=20;
+Aa=40;
 
 %'Calculo de alfa y N'
 
@@ -55,7 +55,7 @@ h=[ h(((N-1)/2 ):-1:1) 1-2*fc h];          % La hacemos causal
 %==========================================================================
 % Multiplicamos por la ventana rectangular
 
-h=h.*rect(N)';
+h=h.*hamming(N)';
 
 
 %=================Normalizamos la respuesta en frecuencia del filtro en banda pasante=====================================
@@ -91,17 +91,17 @@ fase=angle(H);
 %Banda pasante
 figure(1)
 plot(F,20*log10(modulo));
-title('Pasaaltos con ventana rectangular');
+title('Pasaaltos con ventana de Hamming');
 xlabel('Frecuencia [Hz]');
 ylabel('Magnitud [dB]');
-v=[0,fs/2,-50,10];
+v=[0,fs/2,-100,10];
 axis(v);
 grid on
 
 %Banda atenuada
 figure(2)
 plot(F,fase);
-title('Pasaaltos con ventana rectangular');
+title('Pasaaltos con ventana de Hamming');
 xlabel('Frecuencia [Hz]');
 ylabel('Fase [grados]');
 v=[0,fs/2,-10,10];
