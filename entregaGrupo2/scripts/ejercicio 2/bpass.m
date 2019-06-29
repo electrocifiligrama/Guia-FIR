@@ -3,14 +3,16 @@ clear all
 close all
 
 % Especificaciones: Low Pass con:
-fs=44100 ;
-fp=1e3;
-fa=2e3;
-Ap=2;
-Aa=60;
+fs=44100;
+fa1=2e3;
+fp1=2.8e3;
+fp2=4e3;
+fa2=4.6e3;
+Ap=3;
+Aa=40;
 
 
-% Dise?o del filtro Pasa bajos usando ventana de kaiser 
+% Dise�o del filtro Pasa bajos usando ventana de kaiser 
 
 %'Calculo de alfa y N'
 
@@ -34,7 +36,7 @@ else
  D=(Aa-7.95)/14.36;
 end
 
-N=fs*D/(fa-fp)+1;
+N=fs*D/(fa2-fp2)+1;
 N=ceil(N);
 
 %==========================================================================
@@ -47,25 +49,28 @@ end
 
 %Normalizamos respecto de fs
 
-fp=fp/fs;
-fa=fa/fs;
-fc=(fp+fa)/2;	 %frecuencia de corte normalizada respecto de fs
-
+fp1=fp1/fs;
+fa1=fa1/fs;
+fa2=fa2/fs;
+fp2=fp2/fs;
+fc1=(fp1+fa1)/2;	 %frecuencia de corte normalizada respecto de fs
+fc2=(fp2+fa2)/2
 
 %===========================Construccion de la h(n)====================================
 n=1:(N-1)/2;
-h(n)=-2*fc*(sin(2*pi*fc*n)./(2*pi*fc*n)); % h(n) for Lowpass
-h=[ h(((N-1)/2 ):-1:1) 1-2*fc h];          % La hacemos causal 
+h(n)=2*((sin(2*pi*fc2*n)-sin(2*pi*fc1*n))./(2*pi*n)); % h(n) for Lowpass
+h=[ h(((N-1)/2 ):-1:1) 2*(fc2-fc1) h];          % La hacemos causal 
 %==========================================================================
-% Multiplicamos por la ventana rectangular
+% Multiplicamos por la ventana de kaiser
 
 h=h.*kai(N,alfa)';
 
 
+
 %=================Normalizamos la respuesta en frecuencia del filtro en banda pasante=====================================
 
-F0dB=6000;                       % F0dB es la frecuencia donde la ganancia del filtro debe ser unitaria ( 0 dB) esto es la banda pasante del filtro
-Zo=exp(-1j*2*pi*F0dB*1/fs);    % Z=e-jWT
+F0dB=5500;                       % F0dB es la frecuencia donde la ganancia del filtro debe ser unitaria ( 0 dB) esto es la banda pasante del filtro
+Zo=exp(-1i*2*pi*F0dB*1/fs);    % Z=e-jWT
 gain = abs(polyval(h,Zo));    % mod H(ejWT) evaluado en F0dB que es la ganancia actual del filtro en esa frecuencia
 h = h/gain;                   % Normalizamos la h de esta manera los coeficentes del filtro no superan la unidad 
 %====================================================================================================================
@@ -92,20 +97,20 @@ modulo=abs(H);
 fase=angle(H);
 
 
-%modulo
+%Banda pasante
 figure(1)
 plot(F,20*log10(modulo));
-title('Pasaaltos con ventana de Kaiser');
+title('Pasabanda con ventana de Kaiser');
 xlabel('Frecuencia [Hz]');
 ylabel('Magnitud [dB]');
 v=[0,fs/2,-100,10];
 axis(v);
 grid on
 
-%fase
+%Banda atenuada
 figure(2)
 plot(F,fase);
-title('Pasaaltos con ventana de Kaiser');
+title('Pasabanda con ventana de Kaiser');
 xlabel('Frecuencia [Hz]');
 ylabel('Fase [grados]');
 v=[0,fs/2,-10,10];

@@ -3,11 +3,11 @@ clear all
 close all
 
 % Especificaciones: Low Pass con:
-fs=44100 ;
-fp=1e3;
-fa=2e3;
-Ap=2;
-Aa=60;
+fs=48000 ;
+fp=2e3;
+fa=2.2e3;
+Ap=1;
+Aa=40;
 
 
 % Dise?o del filtro Pasa bajos usando ventana de kaiser 
